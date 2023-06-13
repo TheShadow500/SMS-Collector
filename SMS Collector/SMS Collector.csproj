@@ -135,10 +135,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>Verificacion1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Verificacion2.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>Verificacion2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Verificacion3.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Verificacion3.cs</DependentUpon>
@@ -179,12 +175,6 @@
     </Compile>
     <Compile Include="Verificacion1.Designer.cs">
       <DependentUpon>Verificacion1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Verificacion2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Verificacion2.Designer.cs">
-      <DependentUpon>Verificacion2.cs</DependentUpon>
     </Compile>
     <Compile Include="Verificacion3.cs">
       <SubType>Form</SubType>

@@ -1,9 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization;
@@ -70,7 +65,7 @@ namespace SMS_Collector
 
         private void list_Resultado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int sw = 0;
+            int sw;
 
             posicion = list_Resultado.SelectedIndex;
             try

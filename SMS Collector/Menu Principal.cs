@@ -42,11 +42,6 @@ namespace SMS_Collector
             this.Text = "SMS Collector " + version;
         }
 
-        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("SMS Collector\nVersión: " + version + "\n\nCreado por: Daniel Amores (TheShadow)\nColaboradora: Luisa María Gutierrez (Luma)\nGrupo Desarrollo: Sinister Software\nPágina Web: http://theshadow500.blogspot.com \n\nUltima Fecha Revisión: 16/09/2007\nÚltima Fecha Actualización: 12/06/2023", "Sobre");
-        }
-
         private void preferenciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fr_Preferencias preferencias = new fr_Preferencias(usuario, contraseña);
@@ -56,7 +51,7 @@ namespace SMS_Collector
 
         private void bt_NuevoSMS_Click(object sender, EventArgs e)
         {
-            fr_Verificacion1 verificacion1 = new fr_Verificacion1(usuario, contraseña, this);
+            fr_Verificacion1 verificacion1 = new fr_Verificacion1(usuario, contraseña, 1, this);
             this.Hide();
             verificacion1.StartPosition = FormStartPosition.CenterScreen;
             verificacion1.Show();
@@ -71,10 +66,10 @@ namespace SMS_Collector
 
         private void bt_VisualizarSMS_Click(object sender, EventArgs e)
         {
-            fr_Verificacion2 verificacion2 = new fr_Verificacion2(usuario, contraseña, this);
+            fr_Verificacion1 verificacion1 = new fr_Verificacion1(usuario, contraseña, 2, this);
             this.Hide();
-            verificacion2.StartPosition = FormStartPosition.CenterScreen;
-            verificacion2.Show();
+            verificacion1.StartPosition = FormStartPosition.CenterScreen;
+            verificacion1.Show();
         }
 
         private void ayudaRápidaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -345,6 +340,11 @@ namespace SMS_Collector
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://theshadow500.blogspot.com");
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("SMS Collector\nVersión: " + version + "\n\nCreado por: Daniel Amores (TheShadow)\nColaboradora: Luisa María Gutierrez (Luma)\nGrupo Desarrollo: Sinister Software\nPágina Web: http://theshadow500.blogspot.com \n\nUltima Fecha Revisión: 16/09/2007\nÚltima Fecha Actualización: 12/06/2023", "Sobre");
         }
 
         private void bt_Salir_Click(object sender, EventArgs e)

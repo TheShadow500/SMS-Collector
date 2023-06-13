@@ -1,12 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SMS_Collector
@@ -15,12 +9,14 @@ namespace SMS_Collector
     {
         string usuario;
         int contraseña;
+        int opcion;
         fr_MenuPrincipal menu;
 
-        public fr_Verificacion1(string usuario2, int contraseña2, fr_MenuPrincipal menu2)
+        public fr_Verificacion1(string usuario2, int contraseña2, int opcion2, fr_MenuPrincipal menu2)
         {
             usuario = usuario2;
             contraseña = contraseña2;
+            opcion = opcion2;
             menu = menu2;
             InitializeComponent();
             lb_Usuario2.Text = usuario;
@@ -35,7 +31,7 @@ namespace SMS_Collector
         private void bt_Aceptar_Click(object sender, EventArgs e)
         {
             int aux = 0;
-            int sw = 0;
+            int sw;
 
             try
             {
@@ -56,10 +52,20 @@ namespace SMS_Collector
             {
                 if (aux == contraseña)
                 {
-                    tb_Contraseña.Clear();
-                    fr_NuevoSMS NuevoSMS = new fr_NuevoSMS(usuario, contraseña, menu, this);
-                    NuevoSMS.StartPosition = FormStartPosition.CenterScreen;
-                    NuevoSMS.Show();
+                    if (opcion == 1)
+                    {
+                        tb_Contraseña.Clear();
+                        fr_NuevoSMS NuevoSMS = new fr_NuevoSMS(usuario, contraseña, menu, this);
+                        NuevoSMS.StartPosition = FormStartPosition.CenterScreen;
+                        NuevoSMS.Show();
+                    }
+                    else if (opcion == 2)
+                    {
+                        tb_Contraseña.Clear();
+                        fr_Visualizar visualizar = new fr_Visualizar(usuario, contraseña, menu, this);
+                        visualizar.StartPosition = FormStartPosition.CenterScreen;
+                        visualizar.Show();
+                    }
                 }
                 else
                 {
