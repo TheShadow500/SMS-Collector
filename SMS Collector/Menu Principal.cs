@@ -10,7 +10,8 @@ namespace SMS_Collector
 {
     public partial class fr_MenuPrincipal : Form
     {
-        const string version = "v4.5 Final";
+        const string version = "v4.7 Final";
+        const string fecha_rev = "14/06/2023";
 
         BinaryFormatter serie = new BinaryFormatter();
         FileStream flujo;
@@ -344,7 +345,7 @@ namespace SMS_Collector
 
         private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("SMS Collector\nVersión: " + version + "\n\nCreado por: Daniel Amores (TheShadow)\nColaboradora: Luisa María Gutierrez (Luma)\nGrupo Desarrollo: Sinister Software\nPágina Web: http://theshadow500.blogspot.com \n\nUltima Fecha Revisión: 16/09/2007\nÚltima Fecha Actualización: 12/06/2023", "Sobre");
+            MessageBox.Show("SMS Collector\nVersión: " + version + "\n\nCreado por: Daniel Amores (TheShadow)\nColaboradora: Luisa María Gutierrez (Luma)\nGrupo Desarrollo: Sinister Software\nPágina Web: http://theshadow500.blogspot.com \n\nUltima Fecha Revisión: 16/09/2007\nÚltima Fecha Actualización: " + fecha_rev + "", "Sobre");
         }
 
         private void bt_Salir_Click(object sender, EventArgs e)

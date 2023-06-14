@@ -24,6 +24,11 @@ namespace SMS_Collector
             InitializeComponent();
             ver.Close();
             lb_Usuario.Text = "Usuario: " + usuario;
+            cb_Dia.SelectedIndex = 0;
+            cb_Mes.SelectedIndex = 0;
+            cb_Año.SelectedIndex = 0;
+            cb_Hora.SelectedIndex = 0;
+            cb_Minuto.SelectedIndex = 0;
         }
 
         private void bt_Volver_Click(object sender, EventArgs e)
@@ -39,79 +44,103 @@ namespace SMS_Collector
 
         private void bt_Guardar_Click(object sender, EventArgs e)
         {
-            int aux=0;
-            int sw;
+            int aux;
+            bool error = false;
 
             try
             {
-                sw = 1;
                 aux = Int32.Parse(tb_Numero.Text);
             }
             catch (FormatException)
             {
-                sw = 0;
+                error = true;
+                MessageBox.Show("El número de móvil introducido no es correcto", "ERROR", MessageBoxButtons.OK);
             }
-            if ((sw == 1) && (aux >= 600000000) && (aux <= 699999999))
+
+            if(!error)
             {
-                try
+                mensaje = new SMS(Convert.ToString(cb_Dia.SelectedItem), Convert.ToString(cb_Mes.SelectedItem), Convert.ToString(cb_Año.SelectedItem), Convert.ToString(cb_Hora.SelectedItem), Convert.ToString(cb_Minuto.SelectedItem), tb_Mensaje.Text, Int32.Parse(tb_Numero.Text), usuario, contraseña);
+                if(File.Exists("Datos.dat"))
                 {
-                    sw = 1;
-                    aux = Int32.Parse(tb_Hora.Text);
-                }
-                catch (FormatException)
-                {
-                    sw = 0;
-                }
-                if ((sw == 1) && (aux >= 0) && (aux <= 24))
-                {
-                    try
-                    {
-                        sw = 1;
-                        aux = Int32.Parse(tb_Minuto.Text);
-                    }
-                    catch (FormatException)
-                    {
-                        sw = 0;
-                    }
-                    if ((sw == 1) && (aux >= 0) && (aux <= 59))
-                    {
-                        if ((cb_Dia.SelectedItem != null) && (cb_Mes.SelectedItem != null) && (cb_Año.SelectedItem != null))
-                        {
-                            mensaje = new SMS(Convert.ToString(cb_Dia.SelectedItem), Convert.ToString(cb_Mes.SelectedItem), Convert.ToString(cb_Año.SelectedItem), tb_Hora.Text, tb_Minuto.Text, tb_Mensaje.Text, Int32.Parse(tb_Numero.Text), usuario, contraseña);
-                            if (File.Exists("Datos.dat"))
-                            {
-                                flujo = new FileStream("Datos.dat", FileMode.Append, FileAccess.Write);
-                            }
-                            else
-                            {
-                                flujo = new FileStream("Datos.dat", FileMode.Create, FileAccess.Write);
-                            }
-                            serie.Serialize(flujo, mensaje);
-                            flujo.Close();
-                            MessageBox.Show("Mensaje guardado con éxito", "Información", MessageBoxButtons.OK);
-                            tb_Mensaje.Clear();
-                            tb_Hora.Clear();
-                            tb_Minuto.Clear();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Asegurese de haber seleccionado correctamente la fecha\nNo puede ser introducida vía teclado", "Error", MessageBoxButtons.OK);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Asegúrese de haber escrito correctamente los minutos", "Error", MessageBoxButtons.OK);
-                    }
+                    flujo = new FileStream("Datos.dat", FileMode.Append, FileAccess.Write);
                 }
                 else
                 {
-                    MessageBox.Show("Asegúrese de haber escrito correctamente la hora", "Error", MessageBoxButtons.OK);
+                    flujo = new FileStream("Datos.dat", FileMode.Create, FileAccess.Write);
                 }
+                serie.Serialize(flujo, mensaje);
+                flujo.Close();
+                MessageBox.Show("Mensaje guardado con éxito", "Información", MessageBoxButtons.OK);
+                tb_Mensaje.Clear();
+                cb_Hora.SelectedIndex = 0;
+                cb_Minuto.SelectedIndex = 0;
             }
-            else
+        }
+
+        private void cb_Mes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = Convert.ToString(cb_Mes.SelectedItem);
+
+            switch (opcion)
             {
-                MessageBox.Show("Asegúrese de haber escrito correctamente el número del móvil", "Error", MessageBoxButtons.OK);
+                case "Ene":
+                case "Mar":
+                case "May":
+                case "Jul":
+                case "Ago":
+                case "Oct":
+                case "Dic":
+                    cb_Dia.Items.Clear();
+                    for (int i = 1; i <= 31; i++)
+                    {
+                        cb_Dia.Items.Add(i);
+                    }
+                    break;
+                case "Abr":
+                case "Jun":
+                case "Sep":
+                case "Nov":
+                    cb_Dia.Items.Clear();
+                    for (int i = 1; i <= 30; i++)
+                    {
+                        cb_Dia.Items.Add(i);
+                    }
+                    break;
+                case "Feb":
+                    int limite = 28;
+                    cb_Dia.Items.Clear();
+                    if (Convert.ToInt32(cb_Año.SelectedItem) % 4 == 0)
+                    {
+                        limite = 29;
+                    }
+                    for (int i = 1; i <= limite; i++)
+                    {
+                        cb_Dia.Items.Add(i);
+                    }
+                    break;
             }
+            cb_Dia.SelectedIndex = 0;
+        }
+
+        private void cb_Año_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int limite = 31;
+
+            if ((Convert.ToInt32(cb_Año.SelectedItem) % 4 == 0) && Convert.ToString(cb_Mes.SelectedItem) == "Feb")
+            {
+                limite = 29;
+            }
+            else if ((Convert.ToInt32(cb_Año.SelectedItem) % 4 != 0) && Convert.ToString(cb_Mes.SelectedItem) == "Feb")
+            {
+                limite = 28;
+            }
+
+            cb_Dia.Items.Clear();
+            for (int i = 1; i <= limite; i++)
+            {
+                cb_Dia.Items.Add(i);
+            }
+            cb_Dia.SelectedIndex = 0;
         }
     }
 }
