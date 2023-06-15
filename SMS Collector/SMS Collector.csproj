@@ -195,6 +195,7 @@
   <ItemGroup>
     <None Include="bin\Debug\Seguridad.jpg" />
     <None Include="bin\Debug\SMS.jpg" />
+    <None Include="bin\Debug\ReadMe.txt" />
     <Content Include="Icono.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

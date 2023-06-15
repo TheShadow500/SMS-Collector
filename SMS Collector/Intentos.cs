@@ -43,15 +43,15 @@ namespace SMS_Collector
             }
         }
 
-        private void bt_Volver_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void bt_Borrar_Click(object sender, EventArgs e)
         {
             fr_Verificacion3 verificacion3 = new fr_Verificacion3(usuario, contraseña);
             verificacion3.ShowDialog();
+        }
+
+        private void bt_Volver_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

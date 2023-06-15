@@ -71,6 +71,33 @@ namespace SMS_Collector.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a SMS Collector v4.70 Final
+        ///Creado por: Daniel Amores (TheShadow)
+        ///Colaboradora: Luisa María Gutierrez (Luma)
+        ///Grupo de Desarrollo: Sinister Software
+        ///Página Web: http://theshadow500.blogspot.com
+        ///
+        ///version 4.70 - Final (14/06/23)
+        ///----------------------------------------------
+        ///
+        ///Errores Conocidos
+        ///- Nada
+        ///
+        ///Errores Corregidos
+        ///- Ya no se pueden insertar por teclado fechas ni horas al añadir nuevos mensajes.
+        ///
+        ///Mejoras:
+        ///- Optimización del código
+        ///- Mejoras de la interfaz
+        ///- A partir de ahora, la hora se in [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string ReadMe {
+            get {
+                return ResourceManager.GetString("ReadMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Seguridad {

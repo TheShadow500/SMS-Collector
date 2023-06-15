@@ -94,9 +94,7 @@ namespace SMS_Collector
 
         private void bt_Eliminar_Click(object sender, EventArgs e)
         {
-            DialogResult seleccion;
-
-            seleccion = MessageBox.Show("¿Esta seguro de querer eliminar el mensaje seleccionado?", "Atención", MessageBoxButtons.YesNo);
+            DialogResult seleccion = MessageBox.Show("¿Está seguro de querer eliminar el mensaje seleccionado?", "ATENCIÓN", MessageBoxButtons.YesNo);
             if (seleccion == DialogResult.Yes)
             {
                 coleccion.RemoveAt(posicion);

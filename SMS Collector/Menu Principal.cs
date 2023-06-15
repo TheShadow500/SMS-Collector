@@ -4,14 +4,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SMS_Collector
 {
     public partial class fr_MenuPrincipal : Form
     {
-        const string version = "v4.7 Final";
-        const string fecha_rev = "14/06/2023";
+        const string version = "v4.8 Final";
+        const string fecha_rev = "15/06/2023";
 
         BinaryFormatter serie = new BinaryFormatter();
         FileStream flujo;
@@ -58,13 +59,6 @@ namespace SMS_Collector
             verificacion1.Show();
         }
 
-        private void rastreoIntentosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            fr_Intentos intentos = new fr_Intentos(usuario, contraseña);
-            intentos.StartPosition = FormStartPosition.CenterScreen;
-            intentos.ShowDialog();
-        }
-
         private void bt_VisualizarSMS_Click(object sender, EventArgs e)
         {
             fr_Verificacion1 verificacion1 = new fr_Verificacion1(usuario, contraseña, 2, this);
@@ -73,9 +67,16 @@ namespace SMS_Collector
             verificacion1.Show();
         }
 
+        private void rastreoIntentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fr_Intentos intentos = new fr_Intentos(usuario, contraseña);
+            intentos.StartPosition = FormStartPosition.CenterScreen;
+            intentos.ShowDialog();
+        }
+
         private void ayudaRápidaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("No disponible aun. Preparándola para próxima versión.", "Información", MessageBoxButtons.OK);
+            MessageBox.Show("Aún no disponible", "Información", MessageBoxButtons.OK);
         }
 
         private void readMeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,6 +84,10 @@ namespace SMS_Collector
             if (File.Exists("ReadMe.txt"))
             {
                 Process.Start("ReadMe.txt");
+            }
+            else
+            {
+                MessageBox.Show("Archivo ReadMe.txt no disponible", "ATENCIÓN", MessageBoxButtons.OK);
             }
         }
 
@@ -155,9 +160,7 @@ namespace SMS_Collector
             ArrayList coleccion = new ArrayList();
             SMS datos;
             SMS datos2;
-            int sw = 0;
-            int mes = 0;
-            int mes2 = 0;
+            int sw;
 
             if (File.Exists("Datos.dat"))
             {
@@ -190,109 +193,18 @@ namespace SMS_Collector
                             }
                             else if (Int32.Parse(datos.DevolverAño) == Int32.Parse(datos2.DevolverAño))
                             {
-                                if(datos.DevolverMes=="Ene")
+                                List<string> meses = new List<string>()
                                 {
-                                    mes = 1;
-                                }
-                                else if(datos.DevolverMes=="Feb")
-                                {
-                                    mes = 2;
-                                }
-                                else if (datos.DevolverMes == "Mar")
-                                {
-                                    mes = 3;
-                                }
-                                else if (datos.DevolverMes == "Abr")
-                                {
-                                    mes = 4;
-                                }
-                                else if (datos.DevolverMes == "May")
-                                {
-                                    mes = 5;
-                                }
-                                else if (datos.DevolverMes == "Jun")
-                                {
-                                    mes = 6;
-                                }
-                                else if (datos.DevolverMes == "Jul")
-                                {
-                                    mes = 7;
-                                }
-                                else if (datos.DevolverMes == "Ago")
-                                {
-                                    mes = 8;
-                                }
-                                else if (datos.DevolverMes == "Sep")
-                                {
-                                    mes = 9;
-                                }
-                                else if (datos.DevolverMes == "Oct")
-                                {
-                                    mes = 10;
-                                }
-                                else if (datos.DevolverMes == "Nov")
-                                {
-                                    mes = 11;
-                                }
-                                else if (datos.DevolverMes == "Dic")
-                                {
-                                    mes = 12;
-                                }
-                                if (datos2.DevolverMes == "Ene")
-                                {
-                                    mes2 = 1;
-                                }
-                                else if (datos2.DevolverMes == "Feb")
-                                {
-                                    mes2 = 2;
-                                }
-                                else if (datos2.DevolverMes == "Mar")
-                                {
-                                    mes2 = 3;
-                                }
-                                else if (datos2.DevolverMes == "Abr")
-                                {
-                                    mes2 = 4;
-                                }
-                                else if (datos2.DevolverMes == "May")
-                                {
-                                    mes2 = 5;
-                                }
-                                else if (datos2.DevolverMes == "Jun")
-                                {
-                                    mes2 = 6;
-                                }
-                                else if (datos2.DevolverMes == "Jul")
-                                {
-                                    mes2 = 7;
-                                }
-                                else if (datos2.DevolverMes == "Ago")
-                                {
-                                    mes2 = 8;
-                                }
-                                else if (datos2.DevolverMes == "Sep")
-                                {
-                                    mes2 = 9;
-                                }
-                                else if (datos2.DevolverMes == "Oct")
-                                {
-                                    mes2 = 10;
-                                }
-                                else if (datos2.DevolverMes == "Nov")
-                                {
-                                    mes2 = 11;
-                                }
-                                else if (datos2.DevolverMes == "Dic")
-                                {
-                                    mes2 = 12;
-                                }
-                                if (mes > mes2)
+                                    "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+                                };
+
+                                if(meses.IndexOf(datos.DevolverMes) > meses.IndexOf(datos2.DevolverMes))
                                 {
                                     sw = 1;
                                     coleccion[i] = datos2;
                                     coleccion[i + 1] = datos;
                                 }
-                                else if (mes == mes2)
+                                else if (meses.IndexOf(datos.DevolverMes) == meses.IndexOf(datos2.DevolverMes))
                                 {
                                     if (Int32.Parse(datos.DevolverDia) > Int32.Parse(datos2.DevolverDia))
                                     {
@@ -345,7 +257,7 @@ namespace SMS_Collector
 
         private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("SMS Collector\nVersión: " + version + "\n\nCreado por: Daniel Amores (TheShadow)\nColaboradora: Luisa María Gutierrez (Luma)\nGrupo Desarrollo: Sinister Software\nPágina Web: http://theshadow500.blogspot.com \n\nUltima Fecha Revisión: 16/09/2007\nÚltima Fecha Actualización: " + fecha_rev + "", "Sobre");
+            MessageBox.Show("SMS Collector\nVersión: " + version + "\n\nCreado por: Daniel Amores (TheShadow)\nColaboradora: Luisa María Gutierrez (Luma)\nGrupo Desarrollo: Sinister Software\nPágina Web: http://theshadow500.blogspot.com \n\nÚltima Fecha Revisión:" + fecha_rev + "", "Sobre");
         }
 
         private void bt_Salir_Click(object sender, EventArgs e)

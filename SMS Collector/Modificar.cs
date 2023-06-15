@@ -27,6 +27,12 @@ namespace SMS_Collector
             visualizar = visualizar2;
             InitializeComponent();
             visualizar.Close();
+            cb_Año.SelectedIndex = 0;
+            cb_Mes.SelectedIndex = 0;
+            cb_Dia.SelectedIndex = 0;
+            cb_Hora.SelectedIndex = 0;
+            cb_Minuto.SelectedIndex = 0;
+
             if (File.Exists("Datos.dat"))
             {
                 flujo = new FileStream("Datos.dat", FileMode.Open, FileAccess.Read);
@@ -82,11 +88,11 @@ namespace SMS_Collector
             {
                 bt_Modificar.Enabled = true;
                 tb_Numero.Text = Convert.ToString(datos.DevolverNumero);
-                cb_Dia.SelectedItem = datos.DevolverDia;
-                cb_Mes.SelectedItem = datos.DevolverMes;
                 cb_Año.SelectedItem = datos.DevolverAño;
-                tb_Hora.Text = datos.DevolverHora;
-                tb_Minuto.Text = datos.DevolverMinuto;
+                cb_Mes.SelectedItem = datos.DevolverMes;
+                cb_Dia.SelectedItem = datos.DevolverDia;
+                cb_Hora.SelectedItem = datos.DevolverHora;
+                cb_Minuto.SelectedItem = datos.DevolverMinuto;
                 tb_Mensaje.Text = datos.DevolverMensaje;
             }
         }
@@ -115,7 +121,7 @@ namespace SMS_Collector
                 try
                 {
                     sw = 1;
-                    aux = Int32.Parse(tb_Hora.Text);
+                    aux = Int32.Parse(Convert.ToString(cb_Hora.SelectedItem));
                 }
                 catch (FormatException)
                 {
@@ -126,7 +132,7 @@ namespace SMS_Collector
                     try
                     {
                         sw = 1;
-                        aux = Int32.Parse(tb_Minuto.Text);
+                        aux = Int32.Parse(Convert.ToString(cb_Minuto.SelectedItem));
                     }
                     catch (FormatException)
                     {
@@ -134,7 +140,7 @@ namespace SMS_Collector
                     }
                     if ((sw == 1) && (aux >= 0) && (aux <= 59))
                     {
-                        datos = new SMS(Convert.ToString(cb_Dia.SelectedItem), Convert.ToString(cb_Mes.SelectedItem), Convert.ToString(cb_Año.SelectedItem), tb_Hora.Text, tb_Minuto.Text, tb_Mensaje.Text, Int32.Parse(tb_Numero.Text), usuario, contraseña);
+                        datos = new SMS(Convert.ToString(cb_Dia.SelectedItem), Convert.ToString(cb_Mes.SelectedItem), Convert.ToString(cb_Año.SelectedItem), Convert.ToString(cb_Hora.SelectedItem), Convert.ToString(cb_Minuto.SelectedItem), tb_Mensaje.Text, Int32.Parse(tb_Numero.Text), usuario, contraseña);
                         coleccion.RemoveAt(posicion);
                         coleccion.Add(datos);
                         if (File.Exists("Datos.dat"))
@@ -199,6 +205,72 @@ namespace SMS_Collector
             {
                 MessageBox.Show("No existe ningún registro", "Atención", MessageBoxButtons.OK);
             }
+        }
+
+        private void cb_Mes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = Convert.ToString(cb_Mes.SelectedItem);
+
+            switch (opcion)
+            {
+                case "Ene":
+                case "Mar":
+                case "May":
+                case "Jul":
+                case "Ago":
+                case "Oct":
+                case "Dic":
+                    cb_Dia.Items.Clear();
+                    for (int i = 1; i <= 31; i++)
+                    {
+                        cb_Dia.Items.Add(i);
+                    }
+                    break;
+                case "Abr":
+                case "Jun":
+                case "Sep":
+                case "Nov":
+                    cb_Dia.Items.Clear();
+                    for (int i = 1; i <= 30; i++)
+                    {
+                        cb_Dia.Items.Add(i);
+                    }
+                    break;
+                case "Feb":
+                    int limite = 28;
+                    cb_Dia.Items.Clear();
+                    if (Convert.ToInt32(cb_Año.SelectedItem) % 4 == 0)
+                    {
+                        limite = 29;
+                    }
+                    for (int i = 1; i <= limite; i++)
+                    {
+                        cb_Dia.Items.Add(i);
+                    }
+                    break;
+            }
+            cb_Dia.SelectedIndex = 0;
+        }
+
+        private void cb_Año_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int limite = 31;
+
+            if ((Convert.ToInt32(cb_Año.SelectedItem) % 4 == 0) && Convert.ToString(cb_Mes.SelectedItem) == "Feb")
+            {
+                limite = 29;
+            }
+            else if ((Convert.ToInt32(cb_Año.SelectedItem) % 4 != 0) && Convert.ToString(cb_Mes.SelectedItem) == "Feb")
+            {
+                limite = 28;
+            }
+
+            cb_Dia.Items.Clear();
+            for (int i = 1; i <= limite; i++)
+            {
+                cb_Dia.Items.Add(i);
+            }
+            cb_Dia.SelectedIndex = 0;
         }
     }
 }
