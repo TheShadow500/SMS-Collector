@@ -3,15 +3,15 @@ using System;
 namespace SMS_Collector
 {
     [Serializable]
-    class Configuracion
+    public class Configuracion
     {
         string usuario;
-        int contraseña;
+        int contrasena;
 
-        public Configuracion(string usuario2, int contraseña2)
+        public Configuracion(string usuario2, int contrasena2)
         {
             usuario = usuario2;
-            contraseña = contraseña2;
+            contrasena = contrasena2;
         }
 
         public string DevolverUsuario
@@ -26,8 +26,18 @@ namespace SMS_Collector
         {
             get
             {
-                return contraseña;
+                return contrasena;
             }
+        }
+
+        public void AsignarUsuario(string usuario2)
+        {
+            usuario = usuario2;
+        }
+
+        public void AsignarContraseña(int contrasena2)
+        {
+            contrasena = contrasena2;
         }
     }
 }

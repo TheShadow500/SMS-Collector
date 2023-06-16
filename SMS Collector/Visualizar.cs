@@ -112,7 +112,7 @@ namespace SMS_Collector
                     while (true)
                     {
                         datos = (SMS)serie.Deserialize(flujo);
-                        if ((usuario == datos.DevolverUsuario) && (contraseña == datos.DevolverContraseña) && (aux == datos.DevolverNumero))
+                        if ((usuario == datos.DevolverUsuario) && (contraseña == datos.DevolverContrasena) && (aux == datos.DevolverNumero))
                         {
                             list_Resultado.Items.Add("Fecha: " + datos.DevolverDia + "/" + datos.DevolverMes + "/" + datos.DevolverAño + " Hora: " + datos.DevolverHora + ":" + datos.DevolverMinuto);
                             coleccion.Add(datos);

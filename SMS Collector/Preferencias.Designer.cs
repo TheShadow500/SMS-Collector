@@ -32,9 +32,9 @@
             this.gb_Preferencias = new System.Windows.Forms.GroupBox();
             this.tb_Anterior = new System.Windows.Forms.TextBox();
             this.lb_Anterior = new System.Windows.Forms.Label();
-            this.tb_Contraseña = new System.Windows.Forms.TextBox();
+            this.tb_Contrasena = new System.Windows.Forms.TextBox();
             this.lb_Usuario = new System.Windows.Forms.Label();
-            this.lb_Contraseña = new System.Windows.Forms.Label();
+            this.lb_Contrasena = new System.Windows.Forms.Label();
             this.tb_Usuario = new System.Windows.Forms.TextBox();
             this.bt_Aceptar = new System.Windows.Forms.Button();
             this.bt_Volver = new System.Windows.Forms.Button();
@@ -45,9 +45,9 @@
             // 
             this.gb_Preferencias.Controls.Add(this.tb_Anterior);
             this.gb_Preferencias.Controls.Add(this.lb_Anterior);
-            this.gb_Preferencias.Controls.Add(this.tb_Contraseña);
+            this.gb_Preferencias.Controls.Add(this.tb_Contrasena);
             this.gb_Preferencias.Controls.Add(this.lb_Usuario);
-            this.gb_Preferencias.Controls.Add(this.lb_Contraseña);
+            this.gb_Preferencias.Controls.Add(this.lb_Contrasena);
             this.gb_Preferencias.Controls.Add(this.tb_Usuario);
             this.gb_Preferencias.Font = new System.Drawing.Font("Perpetua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb_Preferencias.ForeColor = System.Drawing.SystemColors.Window;
@@ -62,10 +62,12 @@
             // 
             this.tb_Anterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Anterior.Location = new System.Drawing.Point(100, 80);
+            this.tb_Anterior.MaxLength = 10;
             this.tb_Anterior.Name = "tb_Anterior";
             this.tb_Anterior.PasswordChar = '*';
             this.tb_Anterior.Size = new System.Drawing.Size(100, 20);
             this.tb_Anterior.TabIndex = 6;
+            this.tb_Anterior.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Anterior_TextChanged);
             // 
             // lb_Anterior
             // 
@@ -76,14 +78,16 @@
             this.lb_Anterior.TabIndex = 5;
             this.lb_Anterior.Text = "Anterior:";
             // 
-            // tb_Contraseña
+            // tb_Contrasena
             // 
-            this.tb_Contraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Contraseña.Location = new System.Drawing.Point(100, 54);
-            this.tb_Contraseña.Name = "tb_Contraseña";
-            this.tb_Contraseña.PasswordChar = '*';
-            this.tb_Contraseña.Size = new System.Drawing.Size(100, 20);
-            this.tb_Contraseña.TabIndex = 4;
+            this.tb_Contrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Contrasena.Location = new System.Drawing.Point(100, 54);
+            this.tb_Contrasena.MaxLength = 10;
+            this.tb_Contrasena.Name = "tb_Contrasena";
+            this.tb_Contrasena.PasswordChar = '*';
+            this.tb_Contrasena.Size = new System.Drawing.Size(100, 20);
+            this.tb_Contrasena.TabIndex = 4;
+            this.tb_Contrasena.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Contrasena_TextChanged);
             // 
             // lb_Usuario
             // 
@@ -94,14 +98,14 @@
             this.lb_Usuario.TabIndex = 1;
             this.lb_Usuario.Text = "Usuario:";
             // 
-            // lb_Contraseña
+            // lb_Contrasena
             // 
-            this.lb_Contraseña.AutoSize = true;
-            this.lb_Contraseña.Location = new System.Drawing.Point(12, 56);
-            this.lb_Contraseña.Name = "lb_Contraseña";
-            this.lb_Contraseña.Size = new System.Drawing.Size(82, 17);
-            this.lb_Contraseña.TabIndex = 2;
-            this.lb_Contraseña.Text = "Contraseña:";
+            this.lb_Contrasena.AutoSize = true;
+            this.lb_Contrasena.Location = new System.Drawing.Point(12, 56);
+            this.lb_Contrasena.Name = "lb_Contrasena";
+            this.lb_Contrasena.Size = new System.Drawing.Size(82, 17);
+            this.lb_Contrasena.TabIndex = 2;
+            this.lb_Contrasena.Text = "Contraseña:";
             // 
             // tb_Usuario
             // 
@@ -158,10 +162,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gb_Preferencias;
-        private System.Windows.Forms.TextBox tb_Contraseña;
+        private System.Windows.Forms.TextBox tb_Contrasena;
         private System.Windows.Forms.Label lb_Usuario;
         private System.Windows.Forms.TextBox tb_Usuario;
-        private System.Windows.Forms.Label lb_Contraseña;
+        private System.Windows.Forms.Label lb_Contrasena;
         private System.Windows.Forms.Button bt_Aceptar;
         private System.Windows.Forms.TextBox tb_Anterior;
         private System.Windows.Forms.Label lb_Anterior;

@@ -13,9 +13,9 @@ namespace SMS_Collector
         string mensaje;
         int numero;
         string usuario;
-        int contraseña;
+        int contrasena;
 
-        public SMS(string dia2, string mes2, string año2, string hora2, string minuto2, string mensaje2, int numero2, string usuario2, int contraseña2)
+        public SMS(string dia2, string mes2, string año2, string hora2, string minuto2, string mensaje2, int numero2, string usuario2, int contrasena2)
         {
             dia = dia2;
             mes = mes2;
@@ -25,7 +25,7 @@ namespace SMS_Collector
             mensaje = mensaje2;
             numero = numero2;
             usuario = usuario2;
-            contraseña = contraseña2;
+            contrasena = contrasena2;
         }
 
         public string DevolverDia
@@ -92,11 +92,11 @@ namespace SMS_Collector
             }
         }
 
-        public int DevolverContraseña
+        public int DevolverContrasena
         {
             get
             {
-                return contraseña;
+                return contrasena;
             }
         }
     }

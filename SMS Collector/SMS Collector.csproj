@@ -50,6 +50,7 @@
     <Compile Include="AñadirContacto.Designer.cs">
       <DependentUpon>AñadirContacto.cs</DependentUpon>
     </Compile>
+    <Compile Include="MetodosArchivos.cs" />
     <Compile Include="Eliminar.cs">
       <SubType>Form</SubType>
     </Compile>

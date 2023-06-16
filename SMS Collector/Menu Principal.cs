@@ -11,42 +11,32 @@ namespace SMS_Collector
 {
     public partial class fr_MenuPrincipal : Form
     {
-        const string version = "v4.8 Final";
-        const string fecha_rev = "15/06/2023";
+        const string version = "v4.9 Final";
+        const string fecha_rev = "16/06/2023";
 
         BinaryFormatter serie = new BinaryFormatter();
         FileStream flujo;
+        MetodosArchivos metodosArchivos = new MetodosArchivos();
         Configuracion datos;
         string usuario;
         int contraseña;
 
         public fr_MenuPrincipal()
         {
-            if (File.Exists("Config.cfg"))
-            {
-                flujo = new FileStream("Config.cfg", FileMode.Open, FileAccess.Read);
-                datos = (Configuracion)serie.Deserialize(flujo);
-                flujo.Close();
-                usuario = datos.DevolverUsuario;
-                contraseña = datos.DevolverContraseña;
-            }
-            else
-            {
-                MessageBox.Show("Para mayor seguridad, asegúrese de configurar el nombre de usuario y contraseña desde Archivo --> Preferencias", "ATENCION", MessageBoxButtons.OK);
-                MessageBox.Show("No hay ningún usuario definido.\nSe han aplicado los valores por defecto:\n\nUsuario: Admin\nContraseña: 12345", "ATENCION", MessageBoxButtons.OK);
-                usuario = "Admin";
-                contraseña = 12345;
-            }
-            MessageBox.Show("Cargado el perfil: " + usuario, "Información", MessageBoxButtons.OK);
-            this.StartPosition = FormStartPosition.CenterScreen;
+            /* Carga de Datos de Usuario */
+            datos = metodosArchivos.CargarUsuario();
+            usuario = datos.DevolverUsuario;
+            contraseña = datos.DevolverContraseña;
+
             InitializeComponent();
 
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "SMS Collector " + version;
         }
 
         private void preferenciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fr_Preferencias preferencias = new fr_Preferencias(usuario, contraseña);
+            fr_Preferencias preferencias = new fr_Preferencias(datos);
             preferencias.StartPosition = FormStartPosition.CenterScreen;
             preferencias.ShowDialog();
         }
