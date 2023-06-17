@@ -35,7 +35,7 @@ namespace SMS_Collector
             usuario = usuario2;
         }
 
-        public void AsignarContraseña(int contrasena2)
+        public void AsignarContrasena(int contrasena2)
         {
             contrasena = contrasena2;
         }

@@ -61,6 +61,34 @@ namespace SMS_Collector.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a SMS Collector v5.00 Final
+        ///Creado por: Daniel Amores (TheShadow)
+        ///Colaboradora: Luisa María Gutierrez (Luma)
+        ///Grupo de Desarrollo: Sinister Software
+        ///Página Web: http://theshadow500.blogspot.com
+        ///
+        ///version 5.00 - Final (17/06/23)
+        ///----------------------------------------------
+        ///
+        ///Errores Conocidos
+        ///- Ninguno
+        ///
+        ///Errores Corregidos
+        ///- Ninguno
+        ///
+        ///Mejoras
+        ///- Optimización del código
+        ///- Se añaden nuevos Métodos para Archivos en la Biblioteca
+        ///- Corrección de las nomenclaturas en parte de los métodos internos
+        ///- S [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string ChangeLog {
+            get {
+                return ResourceManager.GetString("ChangeLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Logo {
@@ -71,25 +99,26 @@ namespace SMS_Collector.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a SMS Collector v4.70 Final
+        ///   Busca una cadena traducida similar a SMS Collector v5.00 Final
         ///Creado por: Daniel Amores (TheShadow)
         ///Colaboradora: Luisa María Gutierrez (Luma)
         ///Grupo de Desarrollo: Sinister Software
         ///Página Web: http://theshadow500.blogspot.com
         ///
-        ///version 4.70 - Final (14/06/23)
+        ///version 5.00 - Final (17/06/23)
         ///----------------------------------------------
         ///
         ///Errores Conocidos
-        ///- Nada
+        ///- Ninguno
         ///
         ///Errores Corregidos
-        ///- Ya no se pueden insertar por teclado fechas ni horas al añadir nuevos mensajes.
+        ///- Ninguno
         ///
-        ///Mejoras:
+        ///Mejoras
         ///- Optimización del código
-        ///- Mejoras de la interfaz
-        ///- A partir de ahora, la hora se in [resto de la cadena truncado]&quot;;.
+        ///- Se añaden nuevos Métodos para Archivos en la Biblioteca
+        ///- Corrección de las nomenclaturas en parte de los métodos internos
+        ///- S [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string ReadMe {
             get {

@@ -132,13 +132,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>QuienEsModificar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Verificacion1.resx">
+    <EmbeddedResource Include="Verificacion.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>Verificacion1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Verificacion3.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>Verificacion3.cs</DependentUpon>
+      <DependentUpon>Verificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visualizar.resx">
       <SubType>Designer</SubType>
@@ -171,17 +167,11 @@
       <DependentUpon>QuienEsModificar.cs</DependentUpon>
     </Compile>
     <Compile Include="SMS.cs" />
-    <Compile Include="Verificacion1.cs">
+    <Compile Include="Verificacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Verificacion1.Designer.cs">
-      <DependentUpon>Verificacion1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Verificacion3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Verificacion3.Designer.cs">
-      <DependentUpon>Verificacion3.cs</DependentUpon>
+    <Compile Include="Verificacion.Designer.cs">
+      <DependentUpon>Verificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Visualizar.cs">
       <SubType>Form</SubType>
@@ -197,6 +187,7 @@
     <None Include="bin\Debug\Seguridad.jpg" />
     <None Include="bin\Debug\SMS.jpg" />
     <None Include="bin\Debug\ReadMe.txt" />
+    <None Include="bin\Debug\ChangeLog.txt" />
     <Content Include="Icono.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

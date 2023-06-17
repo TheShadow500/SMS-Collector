@@ -45,6 +45,7 @@
             this.ordenarRegistroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rastreoDeIntentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readMeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bt_NuevoSMS = new System.Windows.Forms.Button();
@@ -80,44 +81,44 @@
             this.toolStripSeparator2,
             this.salirToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // nuevoSMSToolStripMenuItem
             // 
             this.nuevoSMSToolStripMenuItem.Name = "nuevoSMSToolStripMenuItem";
-            this.nuevoSMSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nuevoSMSToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.nuevoSMSToolStripMenuItem.Text = "Nuevo SMS";
             this.nuevoSMSToolStripMenuItem.Click += new System.EventHandler(this.bt_NuevoSMS_Click);
             // 
             // visualizarSMSToolStripMenuItem
             // 
             this.visualizarSMSToolStripMenuItem.Name = "visualizarSMSToolStripMenuItem";
-            this.visualizarSMSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.visualizarSMSToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.visualizarSMSToolStripMenuItem.Text = "Visualizar SMS";
             this.visualizarSMSToolStripMenuItem.Click += new System.EventHandler(this.bt_VisualizarSMS_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
             // 
             // preferenciasToolStripMenuItem
             // 
             this.preferenciasToolStripMenuItem.Name = "preferenciasToolStripMenuItem";
-            this.preferenciasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.preferenciasToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.preferenciasToolStripMenuItem.Text = "Preferencias";
             this.preferenciasToolStripMenuItem.Click += new System.EventHandler(this.preferenciasToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.bt_Salir_Click);
             // 
@@ -128,7 +129,7 @@
             this.ordenarRegistroToolStripMenuItem,
             this.rastreoDeIntentosToolStripMenuItem});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.herramientasToolStripMenuItem.Text = "Herramientas";
             // 
             // copiaDeSeguridadToolStripMenuItem
@@ -138,62 +139,70 @@
             this.toolStripSeparator3,
             this.restaurarCopiaToolStripMenuItem});
             this.copiaDeSeguridadToolStripMenuItem.Name = "copiaDeSeguridadToolStripMenuItem";
-            this.copiaDeSeguridadToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.copiaDeSeguridadToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.copiaDeSeguridadToolStripMenuItem.Text = "Copia De Seguridad";
             // 
             // realizarCopiaToolStripMenuItem
             // 
             this.realizarCopiaToolStripMenuItem.Name = "realizarCopiaToolStripMenuItem";
-            this.realizarCopiaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.realizarCopiaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.realizarCopiaToolStripMenuItem.Text = "Realizar Copia";
             this.realizarCopiaToolStripMenuItem.Click += new System.EventHandler(this.realizarCopiaToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(154, 6);
             // 
             // restaurarCopiaToolStripMenuItem
             // 
             this.restaurarCopiaToolStripMenuItem.Name = "restaurarCopiaToolStripMenuItem";
-            this.restaurarCopiaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.restaurarCopiaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.restaurarCopiaToolStripMenuItem.Text = "Restaurar Copia";
             this.restaurarCopiaToolStripMenuItem.Click += new System.EventHandler(this.restaurarCopiaToolStripMenuItem_Click);
             // 
             // ordenarRegistroToolStripMenuItem
             // 
             this.ordenarRegistroToolStripMenuItem.Name = "ordenarRegistroToolStripMenuItem";
-            this.ordenarRegistroToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.ordenarRegistroToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.ordenarRegistroToolStripMenuItem.Text = "Ordenar Registro";
             this.ordenarRegistroToolStripMenuItem.Click += new System.EventHandler(this.ordenarRegistroToolStripMenuItem_Click);
             // 
             // rastreoDeIntentosToolStripMenuItem
             // 
             this.rastreoDeIntentosToolStripMenuItem.Name = "rastreoDeIntentosToolStripMenuItem";
-            this.rastreoDeIntentosToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.rastreoDeIntentosToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.rastreoDeIntentosToolStripMenuItem.Text = "Rastreo Intentos";
             this.rastreoDeIntentosToolStripMenuItem.Click += new System.EventHandler(this.rastreoIntentosToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeLogToolStripMenuItem,
             this.readMeToolStripMenuItem,
             this.sobreToolStripMenuItem});
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // changeLogToolStripMenuItem
+            // 
+            this.changeLogToolStripMenuItem.Name = "changeLogToolStripMenuItem";
+            this.changeLogToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.changeLogToolStripMenuItem.Text = "ChangeLog";
+            this.changeLogToolStripMenuItem.Click += new System.EventHandler(this.changeLogToolStripMenuItem_Click);
             // 
             // readMeToolStripMenuItem
             // 
             this.readMeToolStripMenuItem.Name = "readMeToolStripMenuItem";
-            this.readMeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.readMeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.readMeToolStripMenuItem.Text = "ReadMe";
             this.readMeToolStripMenuItem.Click += new System.EventHandler(this.readMeToolStripMenuItem_Click);
             // 
             // sobreToolStripMenuItem
             // 
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.sobreToolStripMenuItem.Text = "Sobre";
             this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
@@ -278,7 +287,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "fr_MenuPrincipal";
-            this.Text = "SMS Collector v4.00 Final";
+            this.Text = "SMS Collector";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.gb_MenuOpciones.ResumeLayout(false);
@@ -314,6 +323,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.ToolStripMenuItem rastreoDeIntentosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeLogToolStripMenuItem;
     }
 }
 

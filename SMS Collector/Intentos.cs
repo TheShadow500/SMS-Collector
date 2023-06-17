@@ -1,52 +1,34 @@
 using System;
 using System.Windows.Forms;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections;
 
 namespace SMS_Collector
 {
     public partial class fr_Intentos : Form
     {
-        BinaryFormatter serie = new BinaryFormatter();
-        FileStream flujo;
-        string dato = null;
-        string usuario;
-        int contraseña;
+        readonly MetodosArchivos metodosArchivos = new MetodosArchivos();
+        readonly Configuracion usuario;
 
         public fr_Intentos(Configuracion usuario2)
         {
-            usuario = usuario2.DevolverUsuario;
-            contraseña = usuario2.DevolverContrasena;
+            usuario = usuario2;
+            ArrayList intentos;
+
+            this.CenterToScreen();
             InitializeComponent();
-            if (File.Exists("Intentos.dat"))
+
+            intentos = metodosArchivos.ConsultarIntentos();
+
+            for (int i = 0; i < intentos.Count; i++)
             {
-                flujo = new FileStream("Intentos.dat", FileMode.Open, FileAccess.Read);
-                try
-                {
-                    while (true)
-                    {
-                        dato = (String)serie.Deserialize(flujo);
-                        list_Intentos.Items.Add(dato);
-                    }
-                }
-                catch (SerializationException) { }
-                catch (EndOfStreamException) { }
-                finally
-                {
-                    flujo.Close();
-                }
-            }
-            else
-            {
-                list_Intentos.Items.Add("No hay ningun registro");
+                list_Intentos.Items.Add(intentos[i]);
             }
         }
 
         private void bt_Borrar_Click(object sender, EventArgs e)
         {
-            fr_Verificacion3 verificacion3 = new fr_Verificacion3(usuario, contraseña);
-            verificacion3.ShowDialog();
+            fr_Verificacion verificacion = new fr_Verificacion(usuario, 3, null);
+            verificacion.ShowDialog();
         }
 
         private void bt_Volver_Click(object sender, EventArgs e)

@@ -1,8 +1,8 @@
 SMS Collector v5.00 Final
 Creado por: Daniel Amores (TheShadow)
-Colaboradora: Luisa Mar韆 Gutierrez (Luma)
+Colaboradora: Luisa Mar铆a Gutierrez (Luma)
 Grupo de Desarrollo: Sinister Software
-P醙ina Web: http://theshadow500.blogspot.com
+P谩gina Web: http://theshadow500.blogspot.com
 
 version 5.00 - Final (17/06/23)
 ----------------------------------------------
@@ -11,17 +11,19 @@ Errores Conocidos
 - Ninguno
 
 Errores Corregidos
-- Ninguno
+- Corregidos errores de NullException
+- Ya no deber铆a dar error en campos vac铆os ni deber铆a dejar introducir datos no autovalidados
 
 Mejoras
-- Optimizaci髇 del c骴igo
-- Se a馻den nuevos M閠odos para Archivos en la Biblioteca
-- Correcci髇 de las nomenclaturas en parte de los m閠odos internos
-- Se unifican todas las verificaciones de contrase馻 en el mismo formulario
+- Optimizaci贸n del c贸digo
+- Se a帽aden nuevos M茅todos para Archivos en la Biblioteca
+- Correcci贸n de las nomenclaturas en parte de los m茅todos internos
+- Se unifican todas las verificaciones de contrase帽a en el mismo formulario
+- Se a帽ade ChangeLog y ReadMe a la aplicaci贸n para poder seguir los cambios
 
-Pr髕imas Mejoras Programadas
-- Terminar de implementar en todo el programa la Biblioteca de M閠odos para Archivos
-- Terminar la correcci髇 de las nomenclaturas
+Pr贸ximas Mejoras Programadas
+- Terminar de implementar en todo el programa la Biblioteca de M茅todos para Archivos
+- Terminar la correcci贸n de las nomenclaturas
 
 
 version 4.91 - Final (16/06/23)
@@ -34,12 +36,12 @@ Errores Corregidos
 - Ninguno
 
 Mejoras
-- Optimizaci髇 del c骴igo
-- Correcci髇 de las nomenclaturas en parte de los m閠odos internos
+- Optimizaci贸n del c贸digo
+- Correcci贸n de las nomenclaturas en parte de los m茅todos internos
 
-Pr髕imas Mejoras Programadas
-- Terminar de implementar en todo el programa la Biblioteca de M閠odos para Archivos
-- Terminar la correcci髇 de las nomenclaturas
+Pr贸ximas Mejoras Programadas
+- Terminar de implementar en todo el programa la Biblioteca de M茅todos para Archivos
+- Terminar la correcci贸n de las nomenclaturas
 
 
 version 4.90 - Final (16/06/23)
@@ -52,12 +54,12 @@ Errores Corregidos
 - Ninguno
 
 Mejoras
-- Optimizaci髇 del c骴igo
-- Al modificar la contrase馻 no permite la entrada de caracteres
-- Comenzada la Biblioteca de M閠odos para las funciones comunes con archivos. Aun en Implementaci髇
+- Optimizaci贸n del c贸digo
+- Al modificar la contrase帽a no permite la entrada de caracteres
+- Comenzada la Biblioteca de M茅todos para las funciones comunes con archivos. Aun en Implementaci贸n
 
-Pr髕imas Mejoras Programadas:
-- Terminar de implementar en todo el programa la Biblioteca de M閠odos para Archivos
+Pr贸ximas Mejoras Programadas:
+- Terminar de implementar en todo el programa la Biblioteca de M茅todos para Archivos
 
 
 version 4.80 - Final (15/06/23)
@@ -70,14 +72,14 @@ Errores Corregidos
 - Ya no se pueden insertar por teclado fechas ni horas en "Modificar SMS".
 
 Mejoras
-- Optimizaci髇 del c骴igo
+- Optimizaci贸n del c贸digo
 - Mejoras de la interfaz
 - A partir de ahora, la hora y minuto de "Modificar SMS" se inserta por combobox en lugar de teclado
-- A馻dido control de d韆s del mes y a駉s bisiestos en "Modificar SMS"
-- Actualizado el l韒ite de a駉s en "Modificar SMS"
+- A帽adido control de d铆as del mes y a帽os bisiestos en "Modificar SMS"
+- Actualizado el l铆mite de a帽os en "Modificar SMS"
 
-Pr髕imas Mejoras Programadas:
-- Biblioteca de M閠odos para funciones comunes con archivos (creaci髇 del archivo de datos, carga del archivo)
+Pr贸ximas Mejoras Programadas:
+- Biblioteca de M茅todos para funciones comunes con archivos (creaci贸n del archivo de datos, carga del archivo)
 
 
 version 4.70 - Final (14/06/23)
@@ -90,13 +92,13 @@ Errores Corregidos
 - Ya no se pueden insertar por teclado fechas ni horas en "Nuevo SMS".
 
 Mejoras:
-- Optimizaci髇 del c骴igo
+- Optimizaci贸n del c贸digo
 - Mejoras de la interfaz
 - A partir de ahora, la hora y minuto de "Nuevo SMS" se inserta por combobox en lugar de teclado
-- A馻dido control de d韆s del mes y a駉s bisiestos en "Nuevo SMS"
-- Actualizado el l韒ite de a駉s en "Nuevo SMS"
+- A帽adido control de d铆as del mes y a帽os bisiestos en "Nuevo SMS"
+- Actualizado el l铆mite de a帽os en "Nuevo SMS"
 
-Pr髕imas Mejoras Programadas:
+Pr贸ximas Mejoras Programadas:
 - Ninguna
 
 
@@ -107,11 +109,11 @@ Errores Conocidos:
 - Ninguno
 
 Mejoras:
-- Preparado el c骴igo para poder modificar la contrase馻 del usuario
-- Optimizaci髇 del c骴igo
-- Optimizaci髇 de los formularios
+- Preparado el c贸digo para poder modificar la contrase帽a del usuario
+- Optimizaci贸n del c贸digo
+- Optimizaci贸n de los formularios
 
-Pr髕imas Mejoras Programadas:
+Pr贸ximas Mejoras Programadas:
 - Ninguna
 
 
@@ -123,26 +125,26 @@ Errores Conocidos:
 
 Mejoras introducidas:
 - Las ventanas anteriores a las que se abren se cierran y ocultan para
-  dar m醩 comodidad al uso del programa
+  dar m谩s comodidad al uso del programa
 
-Mejoras programadas para la siguiente versi髇
-- Incorporaci髇 de la ayuda R醦ida
-- Incorporaci髇 de la opci髇 Borrar Mensaje
+Mejoras programadas para la siguiente versi贸n
+- Incorporaci贸n de la ayuda R谩pida
+- Incorporaci贸n de la opci贸n Borrar Mensaje
 
 
-versi髇 1.00 - Beta Version
+versi贸n 1.00 - Beta Version
 ----------------------------------------------
 
 Errores Conocidos:
 - Ninguno
 
 
-Mejoras programadas para la siguiente versi髇
-- Incorporaci髇 de la Ayuda R醦ida
-- Incorporaci髇 de la opci髇 Borrar Mensajes
+Mejoras programadas para la siguiente versi贸n
+- Incorporaci贸n de la Ayuda R谩pida
+- Incorporaci贸n de la opci贸n Borrar Mensajes
 
 ------------------------------------------------------------------------------
 
-Si encuentra alg鷑 error o tiene alguna sugerencia, no dude en escribirme a:
+Si encuentra alg煤n error o tiene alguna sugerencia, no dude en escribirme a:
 
 			damorescorzo@gmail.com

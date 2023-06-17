@@ -23,7 +23,7 @@ namespace SMS_Collector
                 if (Int32.Parse(tb_Anterior.Text) == datos.DevolverContrasena)
                 {
                     datos.AsignarUsuario(tb_Usuario.Text);
-                    datos.AsignarContraseña(Int32.Parse(tb_Contrasena.Text));
+                    datos.AsignarContrasena(Int32.Parse(tb_Contrasena.Text));
                     metodosArchivo.ModificarContrasena(datos);
                 }
                 else
@@ -36,6 +36,8 @@ namespace SMS_Collector
             {
                 MessageBox.Show("Asegúrese de que la contraseña este compuesta por un mínimo de 5 dígitos", "Error", MessageBoxButtons.OK);
             }
+
+            this.Close();
         }
 
         private void tb_Contrasena_TextChanged(object sender, KeyPressEventArgs e)

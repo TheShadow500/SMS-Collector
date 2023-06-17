@@ -6,8 +6,8 @@ namespace SMS_Collector
     public partial class fr_AñadirContacto : Form
     {
         MetodosArchivos metodosArchivos = new MetodosArchivos();
-        int movil;
         fr_Visualizar visualizar;
+        int movil;
 
         public fr_AñadirContacto(string movil2, fr_Visualizar visualizar2)
         {

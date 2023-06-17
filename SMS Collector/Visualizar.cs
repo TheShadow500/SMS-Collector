@@ -12,13 +12,13 @@ namespace SMS_Collector
         string usuario;
         int contraseña;
         fr_MenuPrincipal menu;
-        fr_Verificacion1 ver;
+        fr_Verificacion ver;
         BinaryFormatter serie = new BinaryFormatter();
         FileStream flujo;
         SMS datos;
         ArrayList coleccion = new ArrayList();
 
-        public fr_Visualizar(string usuario2, int contraseña2, fr_MenuPrincipal menu2, fr_Verificacion1 ver2)
+        public fr_Visualizar(string usuario2, int contraseña2, fr_MenuPrincipal menu2, fr_Verificacion ver2)
         {
             usuario = usuario2;
             contraseña = contraseña2;
