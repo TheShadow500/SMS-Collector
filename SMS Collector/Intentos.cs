@@ -14,10 +14,10 @@ namespace SMS_Collector
         string usuario;
         int contraseña;
 
-        public fr_Intentos(string usuario2, int contraseña2)
+        public fr_Intentos(Configuracion usuario2)
         {
-            usuario = usuario2;
-            contraseña = contraseña2;
+            usuario = usuario2.DevolverUsuario;
+            contraseña = usuario2.DevolverContrasena;
             InitializeComponent();
             if (File.Exists("Intentos.dat"))
             {

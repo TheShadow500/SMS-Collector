@@ -22,7 +22,7 @@ namespace SMS_Collector
             }
         }
 
-        public int DevolverContraseña
+        public int DevolverContrasena
         {
             get
             {

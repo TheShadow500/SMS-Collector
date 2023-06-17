@@ -12,10 +12,10 @@ namespace SMS_Collector
         int opcion;
         fr_MenuPrincipal menu;
 
-        public fr_Verificacion1(string usuario2, int contraseña2, int opcion2, fr_MenuPrincipal menu2)
+        public fr_Verificacion1(Configuracion usuario2, int opcion2, fr_MenuPrincipal menu2)
         {
-            usuario = usuario2;
-            contraseña = contraseña2;
+            usuario = usuario2.DevolverUsuario;
+            contraseña = usuario2.DevolverContrasena;
             opcion = opcion2;
             menu = menu2;
             InitializeComponent();

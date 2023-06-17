@@ -20,7 +20,7 @@ namespace SMS_Collector
         {
             if (tb_Contrasena.Text.Length >= 5)
             {
-                if (Int32.Parse(tb_Anterior.Text) == datos.DevolverContraseña)
+                if (Int32.Parse(tb_Anterior.Text) == datos.DevolverContrasena)
                 {
                     datos.AsignarUsuario(tb_Usuario.Text);
                     datos.AsignarContraseña(Int32.Parse(tb_Contrasena.Text));

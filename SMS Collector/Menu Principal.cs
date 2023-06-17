@@ -17,16 +17,12 @@ namespace SMS_Collector
         BinaryFormatter serie = new BinaryFormatter();
         FileStream flujo;
         MetodosArchivos metodosArchivos = new MetodosArchivos();
-        Configuracion datos;
-        string usuario;
-        int contraseña;
+        Configuracion usuario;
 
         public fr_MenuPrincipal()
         {
             /* Carga de Datos de Usuario */
-            datos = metodosArchivos.CargarUsuario();
-            usuario = datos.DevolverUsuario;
-            contraseña = datos.DevolverContraseña;
+            usuario = metodosArchivos.CargarUsuario();
 
             InitializeComponent();
 
@@ -36,30 +32,30 @@ namespace SMS_Collector
 
         private void preferenciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fr_Preferencias preferencias = new fr_Preferencias(datos);
+            fr_Preferencias preferencias = new fr_Preferencias(usuario);
             preferencias.StartPosition = FormStartPosition.CenterScreen;
             preferencias.ShowDialog();
         }
 
         private void bt_NuevoSMS_Click(object sender, EventArgs e)
         {
-            fr_Verificacion1 verificacion1 = new fr_Verificacion1(usuario, contraseña, 1, this);
+            fr_Verificacion1 verificacion1 = new fr_Verificacion1(usuario, 1, this);
             this.Hide();
             verificacion1.StartPosition = FormStartPosition.CenterScreen;
-            verificacion1.Show();
+            verificacion1.ShowDialog();
         }
 
         private void bt_VisualizarSMS_Click(object sender, EventArgs e)
         {
-            fr_Verificacion1 verificacion1 = new fr_Verificacion1(usuario, contraseña, 2, this);
+            fr_Verificacion1 verificacion1 = new fr_Verificacion1(usuario, 2, this);
             this.Hide();
             verificacion1.StartPosition = FormStartPosition.CenterScreen;
-            verificacion1.Show();
+            verificacion1.ShowDialog();
         }
 
         private void rastreoIntentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fr_Intentos intentos = new fr_Intentos(usuario, contraseña);
+            fr_Intentos intentos = new fr_Intentos(usuario);
             intentos.StartPosition = FormStartPosition.CenterScreen;
             intentos.ShowDialog();
         }
