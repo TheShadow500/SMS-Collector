@@ -1,0 +1,148 @@
+SMS Collector v5.00 Final
+Creado por: Daniel Amores (TheShadow)
+Colaboradora: Luisa María Gutierrez (Luma)
+Grupo de Desarrollo: Sinister Software
+Página Web: http://theshadow500.blogspot.com
+
+version 5.00 - Final (17/06/23)
+----------------------------------------------
+
+Errores Conocidos
+- Ninguno
+
+Errores Corregidos
+- Ninguno
+
+Mejoras
+- Optimización del código
+- Se añaden nuevos Métodos para Archivos en la Biblioteca
+- Corrección de las nomenclaturas en parte de los métodos internos
+- Se unifican todas las verificaciones de contraseña en el mismo formulario
+
+Próximas Mejoras Programadas
+- Terminar de implementar en todo el programa la Biblioteca de Métodos para Archivos
+- Terminar la corrección de las nomenclaturas
+
+
+version 4.91 - Final (16/06/23)
+----------------------------------------------
+
+Errores Conocidos
+- Ninguno
+
+Errores Corregidos
+- Ninguno
+
+Mejoras
+- Optimización del código
+- Corrección de las nomenclaturas en parte de los métodos internos
+
+Próximas Mejoras Programadas
+- Terminar de implementar en todo el programa la Biblioteca de Métodos para Archivos
+- Terminar la corrección de las nomenclaturas
+
+
+version 4.90 - Final (16/06/23)
+----------------------------------------------
+
+Errores Conocidos
+- Ninguno
+
+Errores Corregidos
+- Ninguno
+
+Mejoras
+- Optimización del código
+- Al modificar la contraseña no permite la entrada de caracteres
+- Comenzada la Biblioteca de Métodos para las funciones comunes con archivos. Aun en Implementación
+
+Próximas Mejoras Programadas:
+- Terminar de implementar en todo el programa la Biblioteca de Métodos para Archivos
+
+
+version 4.80 - Final (15/06/23)
+----------------------------------------------
+
+Errores  Conocidos
+- Ninguno
+
+Errores Corregidos
+- Ya no se pueden insertar por teclado fechas ni horas en "Modificar SMS".
+
+Mejoras
+- Optimización del código
+- Mejoras de la interfaz
+- A partir de ahora, la hora y minuto de "Modificar SMS" se inserta por combobox en lugar de teclado
+- Añadido control de días del mes y años bisiestos en "Modificar SMS"
+- Actualizado el límite de años en "Modificar SMS"
+
+Próximas Mejoras Programadas:
+- Biblioteca de Métodos para funciones comunes con archivos (creación del archivo de datos, carga del archivo)
+
+
+version 4.70 - Final (14/06/23)
+----------------------------------------------
+
+Errores Conocidos
+- Ninguno
+
+Errores Corregidos
+- Ya no se pueden insertar por teclado fechas ni horas en "Nuevo SMS".
+
+Mejoras:
+- Optimización del código
+- Mejoras de la interfaz
+- A partir de ahora, la hora y minuto de "Nuevo SMS" se inserta por combobox en lugar de teclado
+- Añadido control de días del mes y años bisiestos en "Nuevo SMS"
+- Actualizado el límite de años en "Nuevo SMS"
+
+Próximas Mejoras Programadas:
+- Ninguna
+
+
+version 4.50 - Final (12/06/23)
+----------------------------------------------
+
+Errores Conocidos:
+- Ninguno
+
+Mejoras:
+- Preparado el código para poder modificar la contraseña del usuario
+- Optimización del código
+- Optimización de los formularios
+
+Próximas Mejoras Programadas:
+- Ninguna
+
+
+version 1.30 - Beta Version
+----------------------------------------------
+
+Errores Conocidos:
+- Ninguno
+
+Mejoras introducidas:
+- Las ventanas anteriores a las que se abren se cierran y ocultan para
+  dar más comodidad al uso del programa
+
+Mejoras programadas para la siguiente versión
+- Incorporación de la ayuda Rápida
+- Incorporación de la opción Borrar Mensaje
+
+
+versión 1.00 - Beta Version
+----------------------------------------------
+
+Errores Conocidos:
+- Ninguno
+
+
+Mejoras programadas para la siguiente versión
+- Incorporación de la Ayuda Rápida
+- Incorporación de la opción Borrar Mensajes
+
+------------------------------------------------------------------------------
+
+Si encuentra algún error o tiene alguna sugerencia, no dude en escribirme a:
+
+			damorescorzo@gmail.com
