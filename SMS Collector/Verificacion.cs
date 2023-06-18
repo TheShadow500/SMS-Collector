@@ -40,7 +40,7 @@ namespace SMS_Collector
                     else if (opcion == 2)
                     {
                         tb_Contrasena.Clear();
-                        fr_Visualizar visualizar = new fr_Visualizar(usuario.DevolverUsuario, usuario.DevolverContrasena, menu, this);
+                        fr_Visualizar visualizar = new fr_Visualizar(usuario, menu, this);
                         visualizar.StartPosition = FormStartPosition.CenterScreen;
                         visualizar.Show();
                     }

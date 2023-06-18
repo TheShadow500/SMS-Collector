@@ -16,9 +16,9 @@ namespace SMS_Collector
             usuario = usuario2;
             InitializeComponent();
             lb_Usuario.Text = "Usuario: " + usuario.DevolverUsuario;
-            cb_Dia.SelectedIndex = 0;
-            cb_Mes.SelectedIndex = 0;
             cb_Año.SelectedIndex = 0;
+            cb_Mes.SelectedIndex = 0;
+            cb_Dia.SelectedIndex = 0;
             cb_Hora.SelectedIndex = 0;
             cb_Minuto.SelectedIndex = 0;
         }
@@ -57,6 +57,8 @@ namespace SMS_Collector
         private void cb_Mes_SelectedIndexChanged(object sender, EventArgs e)
         {
             string opcion = Convert.ToString(cb_Mes.SelectedItem);
+            bool sw = false;
+            int seleccion = 0;
 
             switch (opcion)
             {
@@ -67,57 +69,98 @@ namespace SMS_Collector
                 case "Ago":
                 case "Oct":
                 case "Dic":
+                    seleccion = cb_Dia.SelectedIndex;
                     cb_Dia.Items.Clear();
                     for (int i = 1; i <= 31; i++)
                     {
                         cb_Dia.Items.Add(i);
                     }
+                    cb_Dia.SelectedIndex = seleccion;
                     break;
                 case "Abr":
                 case "Jun":
                 case "Sep":
                 case "Nov":
+                    if (cb_Dia.SelectedIndex < 30)
+                    {
+                        sw = true;
+                        seleccion = cb_Dia.SelectedIndex;
+                    }
                     cb_Dia.Items.Clear();
                     for (int i = 1; i <= 30; i++)
                     {
                         cb_Dia.Items.Add(i);
                     }
+                    if(sw)
+                    {
+                        cb_Dia.SelectedIndex = seleccion;
+                    }
+                    else
+                    {
+                        cb_Dia.SelectedIndex = 0;
+                    }
                     break;
                 case "Feb":
                     int limite = 28;
-                    cb_Dia.Items.Clear();
                     if (Convert.ToInt32(cb_Año.SelectedItem) % 4 == 0)
                     {
                         limite = 29;
                     }
+                    if (cb_Dia.SelectedIndex < limite)
+                    {
+                        sw = true;
+                        seleccion = cb_Dia.SelectedIndex;
+                    }
+                    cb_Dia.Items.Clear();
                     for (int i = 1; i <= limite; i++)
                     {
                         cb_Dia.Items.Add(i);
                     }
+                    if(sw)
+                    {
+                        cb_Dia.SelectedIndex = seleccion;
+                    }
+                    else
+                    {
+                        cb_Dia.SelectedIndex = 0;
+                    }
                     break;
             }
-            cb_Dia.SelectedIndex = 0;
         }
 
         private void cb_Año_SelectedIndexChanged(object sender, EventArgs e)
         {
             int limite = 31;
+            int seleccion = 0;
+            bool sw = false;
 
-            if ((Convert.ToInt32(cb_Año.SelectedItem) % 4 == 0) && Convert.ToString(cb_Mes.SelectedItem) == "Feb")
+            if ((Convert.ToInt32(cb_Año.SelectedItem) % 4 == 0) && cb_Mes.SelectedIndex == 1)
             {
                 limite = 29;
             }
-            else if ((Convert.ToInt32(cb_Año.SelectedItem) % 4 != 0) && Convert.ToString(cb_Mes.SelectedItem) == "Feb")
+            else if ((Convert.ToInt32(cb_Año.SelectedItem) % 4 != 0) && cb_Mes.SelectedIndex == 1)
             {
                 limite = 28;
             }
 
+            if (cb_Dia.SelectedIndex < limite)
+            {
+                seleccion = cb_Dia.SelectedIndex;
+                sw = true;
+            }
             cb_Dia.Items.Clear();
             for (int i = 1; i <= limite; i++)
             {
                 cb_Dia.Items.Add(i);
             }
-            cb_Dia.SelectedIndex = 0;
+            if (sw)
+            {
+                cb_Dia.SelectedIndex = seleccion;
+            }
+            else
+            {
+                cb_Dia.SelectedIndex = 0;
+            }
         }
 
         private void bt_Volver_Click(object sender, EventArgs e)

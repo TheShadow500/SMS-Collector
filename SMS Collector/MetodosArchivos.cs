@@ -258,5 +258,47 @@ namespace SMS_Collector
             serie.Serialize(flujo, mensaje);
             flujo.Close();
         }
+
+        public ArrayList CargarRegistro()
+        {
+            ArrayList coleccion = new ArrayList();
+            SMS datos;
+
+            if (File.Exists("Datos.dat"))
+            {
+                flujo = new FileStream("Datos.dat", FileMode.Open, FileAccess.Read);
+                try
+                {
+                    while (true)
+                    {
+                        bool encontrado = false;
+                        datos = (SMS)serie.Deserialize(flujo);
+
+                        for (int i = 0; i < coleccion.Count; i++)
+                        {
+                            if ((int)coleccion[i] == datos.DevolverNumero)
+                            {
+                                encontrado = true;
+                            }
+                        }
+                        if (!encontrado)
+                        {
+                            coleccion.Add(datos.DevolverNumero);
+                        }
+                    }
+                }
+                catch (SerializationException) { }
+                catch (EndOfStreamException) { }
+                finally
+                {
+                    flujo.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No existe ningún registro", "Atención", MessageBoxButtons.OK);
+            }
+            return coleccion;
+        }
     }
 }

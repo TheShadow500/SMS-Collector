@@ -9,89 +9,53 @@ namespace SMS_Collector
 {
     public partial class fr_Visualizar : Form
     {
+        MetodosArchivos metodosArchivos = new MetodosArchivos();
         string usuario;
-        int contraseña;
+        int contrasena;
         fr_MenuPrincipal menu;
-        fr_Verificacion ver;
+        fr_Verificacion verificacion;
         BinaryFormatter serie = new BinaryFormatter();
         FileStream flujo;
         SMS datos;
         ArrayList coleccion = new ArrayList();
 
-        public fr_Visualizar(string usuario2, int contraseña2, fr_MenuPrincipal menu2, fr_Verificacion ver2)
+        public fr_Visualizar(Configuracion usuario2, fr_MenuPrincipal menu2, fr_Verificacion verificacion2)
         {
-            usuario = usuario2;
-            contraseña = contraseña2;
+            usuario = usuario2.DevolverUsuario;
+            contrasena = usuario2.DevolverContrasena;
             menu = menu2;
-            ver = ver2;
+            verificacion = verificacion2;
             InitializeComponent();
-            ver.Close();
-            if (File.Exists("Datos.dat"))
+            verificacion.Close();
+            coleccion = metodosArchivos.CargarRegistro();
+            for (int i = 0; i < coleccion.Count; i++)
             {
-                flujo = new FileStream("Datos.dat", FileMode.Open, FileAccess.Read);
-                try
-                {
-                    while (true)
-                    {
-                        int encontrado = 1;
-                        int aux;
-
-                        datos = (SMS)serie.Deserialize(flujo);
-                        for (int i = 0; i < coleccion.Count; i++)
-                        {
-                            aux = (int)coleccion[i];
-                            if (aux == datos.DevolverNumero)
-                            {
-                                encontrado = 0;
-                                break;
-                            }
-                        }
-                        if (encontrado == 1)
-                        {
-                            coleccion.Add(datos.DevolverNumero);
-                        }
-                    }
-                }
-                catch (SerializationException) { }
-                catch (EndOfStreamException) { }
-                finally
-                {
-                    flujo.Close();
-                    for (int i = 0; i < coleccion.Count; i++)
-                    {
-                        cb_Numero.Items.Add(coleccion[i]);
-                    }
-                }
+                cb_Numero.Items.Add(coleccion[i]);
             }
-            else
-            {
-                MessageBox.Show("No existe ningún registro", "Atención", MessageBoxButtons.OK);
-            }
-            
         }
 
         private void bt_Volver_Click(object sender, EventArgs e)
         {
             menu.Show();
-            this.Close();
+            Close();
         }
 
         private void list_Resultado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int aux = 0;
-            int sw = 0;
+            int aux;
+            bool error;
 
             aux = list_Resultado.SelectedIndex;
             try
             {
-                sw = 1;
+                error = false;
                 datos = (SMS)coleccion[aux];
             }
             catch (ArgumentOutOfRangeException)
             {
-                sw = 0;
+                error = true;
             }
-            if (sw == 1)
+            if (!error)
             {
                 MessageBox.Show("Fecha: " + datos.DevolverDia + "/" + datos.DevolverMes + "/" + datos.DevolverAño + "\nHora: " + datos.DevolverHora + ":" + datos.DevolverMinuto + "\n\n" + datos.DevolverMensaje, "Mensaje", MessageBoxButtons.OK);
             }
@@ -112,7 +76,7 @@ namespace SMS_Collector
                     while (true)
                     {
                         datos = (SMS)serie.Deserialize(flujo);
-                        if ((usuario == datos.DevolverUsuario) && (contraseña == datos.DevolverContrasena) && (aux == datos.DevolverNumero))
+                        if ((usuario == datos.DevolverUsuario) && (contrasena == datos.DevolverContrasena) && (aux == datos.DevolverNumero))
                         {
                             list_Resultado.Items.Add("Fecha: " + datos.DevolverDia + "/" + datos.DevolverMes + "/" + datos.DevolverAño + " Hora: " + datos.DevolverHora + ":" + datos.DevolverMinuto);
                             coleccion.Add(datos);
@@ -135,14 +99,14 @@ namespace SMS_Collector
 
         private void modificarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fr_Modificar modificar = new fr_Modificar(usuario, contraseña, menu, this);
+            fr_Modificar modificar = new fr_Modificar(usuario, contrasena, menu, this);
             modificar.StartPosition = FormStartPosition.CenterScreen;
             modificar.Show();
         }
 
         private void eliminarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fr_Eliminar eliminar = new fr_Eliminar(usuario, contraseña, menu, this);
+            fr_Eliminar eliminar = new fr_Eliminar(usuario, contrasena, menu, this);
             eliminar.StartPosition = FormStartPosition.CenterScreen;
             eliminar.Show();
         }

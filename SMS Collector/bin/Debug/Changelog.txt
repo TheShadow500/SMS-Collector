@@ -1,8 +1,25 @@
-SMS Collector v5.00 Final
+SMS Collector v5.10 Final
 Creado por: Daniel Amores (TheShadow)
 Colaboradora: Luisa María Gutierrez (Luma)
 Grupo de Desarrollo: Sinister Software
 Página Web: http://theshadow500.blogspot.com
+
+version 5.10 - Final (18/06/23)
+----------------------------------------------
+
+Errores Conocidos
+- Ninguno
+
+Errores Corregidos
+- Arreglada la incoherencia de la asignación de días entre la selección de los años/años bisiestos y meses
+
+Mejoras
+- Optimización del código
+
+Próximas Mejoras Programadas
+- Terminar de implementar en toda la aplicacion la Biblioteca de Métodos para Archivos
+- Terminar la corrección de las nomenclaturas
+
 
 version 5.00 - Final (17/06/23)
 ----------------------------------------------

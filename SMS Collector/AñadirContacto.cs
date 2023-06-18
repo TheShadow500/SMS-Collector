@@ -19,7 +19,7 @@ namespace SMS_Collector
 
         private void bt_Guardar_Click(object sender, EventArgs e)
         {
-            if ((tb_Nombre.Text.Length > 0) && (tb_Apellidos.Text.Length > 0) && (tb_Email.Text.Length > 0))
+            if (!string.IsNullOrEmpty(tb_Nombre.Text) && !string.IsNullOrEmpty(tb_Apellidos.Text) && !string.IsNullOrEmpty(tb_Email.Text))
             {
                 Persona persona = new Persona(tb_Nombre.Text, tb_Apellidos.Text, tb_Email.Text, (Int32)movil);
                 metodosArchivos.AnadirContacto(persona);
