@@ -19,10 +19,10 @@ namespace SMS_Collector
         ArrayList coleccion = new ArrayList();
         int posicion;
 
-        public fr_Modificar(string usuario2, int contraseña2, fr_MenuPrincipal menu2, fr_Visualizar visualizar2)
+        public fr_Modificar(Configuracion usuario2, fr_MenuPrincipal menu2, fr_Visualizar visualizar2)
         {
-            usuario = usuario2;
-            contraseña = contraseña2;
+            usuario = usuario2.DevolverUsuario;
+            contraseña = usuario2.DevolverContrasena;
             menu = menu2;
             visualizar = visualizar2;
             InitializeComponent();

@@ -10,8 +10,7 @@ namespace SMS_Collector
     public partial class fr_Visualizar : Form
     {
         MetodosArchivos metodosArchivos = new MetodosArchivos();
-        string usuario;
-        int contrasena;
+        Configuracion usuario;
         fr_MenuPrincipal menu;
         fr_Verificacion verificacion;
         BinaryFormatter serie = new BinaryFormatter();
@@ -21,8 +20,7 @@ namespace SMS_Collector
 
         public fr_Visualizar(Configuracion usuario2, fr_MenuPrincipal menu2, fr_Verificacion verificacion2)
         {
-            usuario = usuario2.DevolverUsuario;
-            contrasena = usuario2.DevolverContrasena;
+            usuario = usuario2;
             menu = menu2;
             verificacion = verificacion2;
             InitializeComponent();
@@ -32,12 +30,6 @@ namespace SMS_Collector
             {
                 cb_Numero.Items.Add(coleccion[i]);
             }
-        }
-
-        private void bt_Volver_Click(object sender, EventArgs e)
-        {
-            menu.Show();
-            Close();
         }
 
         private void list_Resultado_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,50 +55,30 @@ namespace SMS_Collector
 
         private void cb_Numero_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int aux = 0;
-
-            aux = (int)cb_Numero.SelectedItem;
+            coleccion = metodosArchivos.CargarHistorial(usuario, (int)cb_Numero.SelectedItem);
             list_Resultado.Items.Clear();
-            coleccion.Clear();
-            if (File.Exists("Datos.dat"))
+            for (int i = 0; i < coleccion.Count; i++)
             {
-                flujo = new FileStream("Datos.dat", FileMode.Open, FileAccess.Read);
-                try
-                {
-                    while (true)
-                    {
-                        datos = (SMS)serie.Deserialize(flujo);
-                        if ((usuario == datos.DevolverUsuario) && (contrasena == datos.DevolverContrasena) && (aux == datos.DevolverNumero))
-                        {
-                            list_Resultado.Items.Add("Fecha: " + datos.DevolverDia + "/" + datos.DevolverMes + "/" + datos.DevolverAño + " Hora: " + datos.DevolverHora + ":" + datos.DevolverMinuto);
-                            coleccion.Add(datos);
-                        }
-                    }
-                }
-                catch (SerializationException) { }
-                catch (EndOfStreamException) { }
-                finally
-                {
-                    flujo.Close();
-                    lb_Encontrados.Text = "Encontrados: " + list_Resultado.Items.Count;
-                    if (list_Resultado.Items.Count == 0)
-                    {
-                        list_Resultado.Items.Add("No se han encontrado resultados");
-                    }
-                }
+                datos = (SMS)coleccion[i];
+                list_Resultado.Items.Add("Fecha: " + datos.DevolverDia + "/" + datos.DevolverMes + "/" + datos.DevolverAño + " Hora: " + datos.DevolverHora + ":" + datos.DevolverMinuto);
+            }
+            lb_Encontrados.Text = "Encontrados: " + list_Resultado.Items.Count;
+            if (list_Resultado.Items.Count == 0)
+            {
+                list_Resultado.Items.Add("No se han encontrado resultados");
             }
         }
 
         private void modificarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fr_Modificar modificar = new fr_Modificar(usuario, contrasena, menu, this);
+            fr_Modificar modificar = new fr_Modificar(usuario, menu, this);
             modificar.StartPosition = FormStartPosition.CenterScreen;
             modificar.Show();
         }
 
         private void eliminarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fr_Eliminar eliminar = new fr_Eliminar(usuario, contrasena, menu, this);
+            fr_Eliminar eliminar = new fr_Eliminar(usuario, menu, this);
             eliminar.StartPosition = FormStartPosition.CenterScreen;
             eliminar.Show();
         }
@@ -178,6 +150,12 @@ namespace SMS_Collector
             {
                 MessageBox.Show("Asegúrese de tener un número seleccionado de manera activa", "Atención", MessageBoxButtons.OK);
             }
+        }
+
+        private void bt_Volver_Click(object sender, EventArgs e)
+        {
+            menu.Show();
+            Close();
         }
     }
 }

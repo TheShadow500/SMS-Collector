@@ -300,5 +300,39 @@ namespace SMS_Collector
             }
             return coleccion;
         }
+
+        public ArrayList CargarHistorial(Configuracion usuario, int numero)
+        {
+            ArrayList coleccion = new ArrayList();
+            SMS datos;
+
+            if (File.Exists("Datos.dat"))
+            {
+                flujo = new FileStream("Datos.dat", FileMode.Open, FileAccess.Read);
+                try
+                {
+                    while (true)
+                    {
+                        datos = (SMS)serie.Deserialize(flujo);
+                        if ((usuario.DevolverUsuario == datos.DevolverUsuario) && (usuario.DevolverContrasena == datos.DevolverContrasena) && (numero == datos.DevolverNumero))
+                        {
+                            coleccion.Add(datos);
+                        }
+                    }
+                }
+                catch (SerializationException) { }
+                catch (EndOfStreamException) { }
+                finally
+                {
+                    flujo.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("El Historial esta vacío", "Atención", MessageBoxButtons.OK);
+            }
+
+            return coleccion;
+        }
     }
 }

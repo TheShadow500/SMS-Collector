@@ -1,8 +1,26 @@
-SMS Collector v5.10 Final
+SMS Collector v5.15 Final
 Creado por: Daniel Amores (TheShadow)
 Colaboradora: Luisa María Gutierrez (Luma)
 Grupo de Desarrollo: Sinister Software
 Página Web: http://theshadow500.blogspot.com
+
+version 5.15 - Final (23/06/23)
+----------------------------------------------
+
+Errores Conocidos
+- El menú de visualización muestra un parpadeo puntual al cambiar de número de teléfono que no afecta al funcionamiento
+
+Errores Corregidos
+- Ninguno
+
+Mejoras
+- Optimización del código
+- Se añaden los métodos para archivos en el menú de visualizacion
+
+Próximas Mejoras Programadas
+- Terminar de implementar en toda la aplicacion la Biblioteca de Métodos para Archivos
+- Terminar la corrección de las nomenclaturas
+
 
 version 5.10 - Final (18/06/23)
 ----------------------------------------------
