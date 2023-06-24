@@ -334,5 +334,56 @@ namespace SMS_Collector
 
             return coleccion;
         }
+
+        public void QuienEs(int numero, fr_Visualizar formulario)
+        {
+            bool encontrado = false;
+
+            if (File.Exists("Numeros.dat"))
+            {
+                FileStream flujo = new FileStream("Numeros.dat", FileMode.Open, FileAccess.Read);
+                try
+                {
+                    while (true)
+                    {
+                        Persona aux = (Persona)serie.Deserialize(flujo);
+                        if (aux.DevolverMovil == numero)
+                        {
+                            encontrado = true;
+                            fr_QuienEs quienes = new fr_QuienEs(aux.DevolverNombre, aux.DevolverApellidos, aux.DevolverEmail, aux.DevolverMovil, formulario);
+                            quienes.StartPosition = FormStartPosition.CenterScreen;
+                            quienes.Show();
+                            formulario.Hide();
+                            break;
+                        }
+                        else
+                        {
+                            encontrado = false;
+                        }
+                    }
+                }
+                catch (SerializationException) { }
+                catch (EndOfStreamException) { }
+                finally
+                {
+                    flujo.Close();
+                }
+            }
+            else
+            {
+                encontrado = false;
+            }
+            if (!encontrado)
+            {
+                DialogResult seleccion = MessageBox.Show("No existe información sobre el número " + numero + ". ¿Desea añadirla?", "Atención", MessageBoxButtons.YesNo);
+                if (seleccion == DialogResult.Yes)
+                {
+                    fr_AñadirContacto añadir = new fr_AñadirContacto(Convert.ToString(numero), formulario);
+                    añadir.StartPosition = FormStartPosition.CenterScreen;
+                    añadir.Show();
+                    formulario.Hide();
+                }
+            }
+        }
     }
 }

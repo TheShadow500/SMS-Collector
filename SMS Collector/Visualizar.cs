@@ -1,8 +1,5 @@
 using System;
 using System.Windows.Forms;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections;
 
 namespace SMS_Collector
@@ -13,8 +10,6 @@ namespace SMS_Collector
         Configuracion usuario;
         fr_MenuPrincipal menu;
         fr_Verificacion verificacion;
-        BinaryFormatter serie = new BinaryFormatter();
-        FileStream flujo;
         SMS datos;
         ArrayList coleccion = new ArrayList();
 
@@ -97,54 +92,7 @@ namespace SMS_Collector
         {
             if ((cb_Numero.SelectedItem != null) && (cb_Numero.SelectedText.Length == 9))
             {
-                int encontrados = 1;
-                DialogResult seleccion;
-
-                if (File.Exists("Numeros.dat"))
-                {
-                    FileStream flujo2 = new FileStream("Numeros.dat", FileMode.Open, FileAccess.Read);
-                    try
-                    {
-                        while (true)
-                        {
-                            Persona aux = (Persona)serie.Deserialize(flujo2);
-                            if (Convert.ToString(aux.DevolverMovil).CompareTo(cb_Numero.SelectedText) == 0)
-                            {
-                                encontrados = 1;
-                                fr_QuienEs quienes = new fr_QuienEs(aux.DevolverNombre, aux.DevolverApellidos, aux.DevolverEmail, aux.DevolverMovil, this);
-                                quienes.StartPosition = FormStartPosition.CenterScreen;
-                                quienes.Show();
-                                this.Hide();
-                                break;
-                            }
-                            else
-                            {
-                                encontrados = 0;
-                            }
-                        }
-                    }
-                    catch (SerializationException) { }
-                    catch (EndOfStreamException) { }
-                    finally
-                    {
-                        flujo2.Close();
-                    }
-                }
-                else
-                {
-                    encontrados = 0;
-                }
-                if (encontrados == 0)
-                {
-                    seleccion = MessageBox.Show("No existe información sobre el número " + cb_Numero.SelectedText + ". ¿Desea añadirla?", "Atención", MessageBoxButtons.YesNo);
-                    if (seleccion == DialogResult.Yes)
-                    {
-                        fr_AñadirContacto añadir = new fr_AñadirContacto(cb_Numero.SelectedText, this);
-                        añadir.StartPosition = FormStartPosition.CenterScreen;
-                        añadir.Show();
-                        this.Hide();
-                    }
-                }
+                metodosArchivos.QuienEs((int)cb_Numero.SelectedItem, this);
             }
             else
             {

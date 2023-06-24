@@ -7,8 +7,8 @@ namespace SMS_Collector
 {
     public partial class fr_MenuPrincipal : Form
     {
-        const string version = "v5.15 Final";
-        const string fecha_rev = "23/06/2023";
+        const string version = "v5.20 Final";
+        const string fecha_rev = "24/06/2023";
 
         MetodosArchivos metodosArchivos = new MetodosArchivos();
         Configuracion usuario;
