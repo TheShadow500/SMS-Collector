@@ -25,7 +25,7 @@ namespace SMS_Collector
             visualizar.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void bt_Modificar_Click(object sender, EventArgs e)
         {
             fr_QuienEsModificar quienesmodificar = new fr_QuienEsModificar(aux.DevolverNombre, aux.DevolverApellidos, aux.DevolverEmail, aux.DevolverMovil, this);
             quienesmodificar.StartPosition = FormStartPosition.CenterScreen;

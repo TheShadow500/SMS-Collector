@@ -35,7 +35,7 @@
             this.lb_Apellidos = new System.Windows.Forms.Label();
             this.lb_Nombre = new System.Windows.Forms.Label();
             this.bt_Volver = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bt_Modificar = new System.Windows.Forms.Button();
             this.gb_DatosPersonales.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,16 +101,16 @@
             this.bt_Volver.UseVisualStyleBackColor = true;
             this.bt_Volver.Click += new System.EventHandler(this.bt_Volver_Click);
             // 
-            // button1
+            // bt_Modificar
             // 
-            this.button1.Font = new System.Drawing.Font("Perpetua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(252, 146);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Modificar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bt_Modificar.Font = new System.Drawing.Font("Perpetua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_Modificar.Location = new System.Drawing.Point(252, 146);
+            this.bt_Modificar.Name = "bt_Modificar";
+            this.bt_Modificar.Size = new System.Drawing.Size(80, 23);
+            this.bt_Modificar.TabIndex = 2;
+            this.bt_Modificar.Text = "Modificar";
+            this.bt_Modificar.UseVisualStyleBackColor = true;
+            this.bt_Modificar.Click += new System.EventHandler(this.bt_Modificar_Click);
             // 
             // fr_QuienEs
             // 
@@ -119,7 +119,7 @@
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(344, 176);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bt_Modificar);
             this.Controls.Add(this.bt_Volver);
             this.Controls.Add(this.gb_DatosPersonales);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -142,6 +142,6 @@
         private System.Windows.Forms.Label lb_Nombre;
         private System.Windows.Forms.Button bt_Volver;
         private System.Windows.Forms.Label lb_Movil;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bt_Modificar;
     }
 }

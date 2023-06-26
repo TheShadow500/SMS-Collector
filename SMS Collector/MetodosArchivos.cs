@@ -426,5 +426,47 @@ namespace SMS_Collector
                 }
             }
         }
+
+        public void QuienEsModificar(Persona aux)
+        {
+            if(ComprobarArchivo(2))
+            {
+                ArrayList personas = new ArrayList();
+                flujo = new FileStream(archivo_numeros, FileMode.Open, FileAccess.Read);
+
+                try
+                {
+                    while (true)
+                    {
+                        Persona aux2 = (Persona)serie.Deserialize(flujo);
+                        if (aux.DevolverMovil == aux2.DevolverMovil)
+                        {
+                            personas.Add(aux);
+                        }
+                        else
+                        {
+                            personas.Add(aux2);
+                        }
+                    }
+                }
+                catch (SerializationException) { }
+                catch (EndOfStreamException) { }
+                finally
+                {
+                    flujo.Close();
+                    flujo = new FileStream(archivo_numeros, FileMode.Open, FileAccess.Write);
+                    for (int i = 0; i < personas.Count; i++)
+                    {
+                        serie.Serialize(flujo, personas[i]);
+                    }
+                    flujo.Close();
+                    MessageBox.Show("Información de contacto modificada con éxito", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se pueden guardar los datos", "ATENCIÓN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
