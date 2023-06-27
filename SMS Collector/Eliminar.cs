@@ -1,60 +1,32 @@
 using System;
 using System.Windows.Forms;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections;
 
 namespace SMS_Collector
 {
     public partial class fr_Eliminar : Form
     {
-        string usuario;
-        int contraseña;
+        MetodosArchivos metodosArchivos = new MetodosArchivos();
         fr_MenuPrincipal menu;
         fr_Visualizar visualizar;
-        BinaryFormatter serie = new BinaryFormatter();
-        FileStream flujo;
         SMS datos;
         ArrayList coleccion = new ArrayList();
         int posicion;
 
         public fr_Eliminar(Configuracion usuario2, fr_MenuPrincipal menu2, fr_Visualizar visualizar2)
         {
-            usuario = usuario2.DevolverUsuario;
-            contraseña = usuario2.DevolverContrasena;
             menu = menu2;
             visualizar = visualizar2;
             InitializeComponent();
             visualizar.Close();
-            if (File.Exists("Datos.dat"))
+
+            coleccion = metodosArchivos.CargarRegistroCompleto();
+            for (int i = 0; i < coleccion.Count; i++)
             {
-                flujo = new FileStream("Datos.dat", FileMode.Open, FileAccess.Read);
-                try
-                {
-                    while (true)
-                    {
-                        datos = (SMS)serie.Deserialize(flujo);
-                        coleccion.Add(datos);
-                    }
-                }
-                catch (SerializationException) { }
-                catch (EndOfStreamException) { }
-                finally
-                {
-                    flujo.Close();
-                    for (int i = 0; i < coleccion.Count; i++)
-                    {
-                        datos = (SMS)coleccion[i];
-                        list_Resultado.Items.Add(Convert.ToString(datos.DevolverNumero) + " - " + datos.DevolverDia + "/" + datos.DevolverMes + "/" + datos.DevolverAño + " - " + datos.DevolverHora + ":" + datos.DevolverMinuto);
-                    }
-                    lb_Encontrados.Text = "Encontrados: " + list_Resultado.Items.Count;
-                }
+                datos = (SMS)coleccion[i];
+                list_Resultado.Items.Add(Convert.ToString(datos.DevolverNumero) + " - " + datos.DevolverDia + "/" + datos.DevolverMes + "/" + datos.DevolverAño + " - " + datos.DevolverHora + ":" + datos.DevolverMinuto);
             }
-            else
-            {
-                MessageBox.Show("No existe ningún registro", "Atención", MessageBoxButtons.OK);
-            }
+            lb_Encontrados.Text = "Encontrados: " + list_Resultado.Items.Count;
         }
 
         private void bt_Volver_Click(object sender, EventArgs e)
@@ -65,19 +37,19 @@ namespace SMS_Collector
 
         private void list_Resultado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int sw;
+            bool encontrado;
 
             posicion = list_Resultado.SelectedIndex;
             try
             {
-                sw = 1;
+                encontrado = true;
                 datos = (SMS)coleccion[posicion];
             }
             catch (ArgumentOutOfRangeException)
             {
-                sw = 0;
+                encontrado = false;
             }
-            if (sw == 1)
+            if (encontrado)
             {
                 bt_Eliminar.Enabled = true;
                 lb_Numero.Text="Nº Móvil: "+ Convert.ToString(datos.DevolverNumero);
@@ -98,13 +70,7 @@ namespace SMS_Collector
             if (seleccion == DialogResult.Yes)
             {
                 coleccion.RemoveAt(posicion);
-                flujo = new FileStream("Datos.dat", FileMode.Create, FileAccess.Write);
-                for (int i = 0; i < coleccion.Count; i++)
-                {
-                    datos = (SMS)coleccion[i];
-                    serie.Serialize(flujo, datos);
-                }
-                flujo.Close();
+                metodosArchivos.CrearArchivo(coleccion);
                 MessageBox.Show("Mensaje eliminado con éxito", "Información", MessageBoxButtons.OK);
                 Actualizar();
             }
@@ -119,34 +85,13 @@ namespace SMS_Collector
             tb_Mensaje.Clear();
             list_Resultado.Items.Clear();
             coleccion.Clear();
-            if (File.Exists("Datos.dat"))
+            coleccion = metodosArchivos.CargarRegistroCompleto();
+            for (int i = 0; i < coleccion.Count; i++)
             {
-                flujo = new FileStream("Datos.dat", FileMode.Open, FileAccess.Read);
-                try
-                {
-                    while (true)
-                    {
-                        datos = (SMS)serie.Deserialize(flujo);
-                        coleccion.Add(datos);
-                    }
-                }
-                catch (SerializationException) { }
-                catch (EndOfStreamException) { }
-                finally
-                {
-                    flujo.Close();
-                    for (int i = 0; i < coleccion.Count; i++)
-                    {
-                        datos = (SMS)coleccion[i];
-                        list_Resultado.Items.Add(Convert.ToString(datos.DevolverNumero) + " - " + datos.DevolverDia + "/" + datos.DevolverMes + "/" + datos.DevolverAño + " - " + datos.DevolverHora + ":" + datos.DevolverMinuto);
-                    }
-                    lb_Encontrados.Text = "Encontrados: " + list_Resultado.Items.Count;
-                }
+                datos = (SMS)coleccion[i];
+                list_Resultado.Items.Add(Convert.ToString(datos.DevolverNumero) + " - " + datos.DevolverDia + "/" + datos.DevolverMes + "/" + datos.DevolverAño + " - " + datos.DevolverHora + ":" + datos.DevolverMinuto);
             }
-            else
-            {
-                MessageBox.Show("No existe ningún registro", "Atención", MessageBoxButtons.OK);
-            }
+            lb_Encontrados.Text = "Encontrados: " + list_Resultado.Items.Count;
         }
     }
 }

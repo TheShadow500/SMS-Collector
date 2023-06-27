@@ -300,6 +300,35 @@ namespace SMS_Collector
             flujo.Close();
         }
 
+        public ArrayList CargarRegistroCompleto()
+        {
+            ArrayList coleccion = new ArrayList();
+
+            if (ComprobarArchivo(4))
+            {
+                flujo = new FileStream(archivo_datos, FileMode.Open, FileAccess.Read);
+                try
+                {
+                    while (true)
+                    {
+                        coleccion.Add((SMS)serie.Deserialize(flujo));
+                    }
+                }
+                catch (SerializationException) { }
+                catch (EndOfStreamException) { }
+                finally
+                {
+                    flujo.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No existe ningún registro", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return coleccion;
+        }
+
         public ArrayList CargarRegistro()
         {
             ArrayList coleccion = new ArrayList();

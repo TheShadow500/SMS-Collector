@@ -262,12 +262,12 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold);
-            this.linkLabel1.Location = new System.Drawing.Point(61, 249);
+            this.linkLabel1.Location = new System.Drawing.Point(43, 248);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(168, 14);
+            this.linkLabel1.Size = new System.Drawing.Size(203, 14);
             this.linkLabel1.TabIndex = 7;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "©2007 Sinister Software";
+            this.linkLabel1.Text = "©2007-2023 Sinister Software";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // fr_MenuPrincipal
